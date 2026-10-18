@@ -1,0 +1,244 @@
+window.addEventListener("load", () => {
+    document.getElementById("Verify").showModal();
+});
+
+window.addEventListener("DOMContentLoaded",() => {
+    loadSave().catch(error => alert(error.message));
+})
+
+function addItem() {
+    document.getElementById("popAdd").showModal();
+}
+
+function addItemCancel() {
+    document.getElementById("popAdd").close();
+}
+
+async function addItemSubmit() {
+
+    var itemName = document.getElementById("iname").value;
+    var itemQuantity = Number(document.getElementById("iq").value);
+    var itemID = Number(document.getElementById("id").value);
+    var itemPrice = Number(document.getElementById("iprc").value);
+
+    const rightNow = new Date();
+    
+    try{
+        const date = rightNow.toLocaleDateString();
+        const time = rightNow.toLocaleTimeString();
+
+        await saveISubmit();
+        renderItem({
+            name: itemName,
+            quantity: itemQuantity,
+            id: itemID,
+            date: date,
+            time: time,
+            price: itemPrice
+        });
+        document.getElementById("popAdd").close();
+    } catch (error) {
+        alert(error.message);
+        return;
+    }
+}
+
+async function saveISubmit() {
+
+    const rightNow = new Date();
+
+    const iInfo = {
+        name: document.getElementById("iname").value,
+        quantity: Number(document.getElementById("iq").value),
+        id: Number(document.getElementById("id").value), 
+        date: rightNow.toLocaleDateString(),
+        time: rightNow.toLocaleTimeString(),
+        price: Number(document.getElementById("iprc").value)
+    }
+
+    const response = await fetch('Backend.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(iInfo)
+    });
+
+    if(!response.ok){
+        throw new Error("Could not save item");
+    }
+}
+
+//ItemRender
+function renderItem(item){
+    const img = document.createElement("img");
+    img.src = "Black_question_mark.png";
+    img.alt = "Item Picture";
+
+    const content=document.createElement('div');
+    content.className="dtls";
+
+    const name=document.createElement('h3');
+    name.className="nm";
+    name.textContent = item.name;
+
+    const details=document.createElement('p');
+    details.className="info";
+    details.append(
+        document.createTextNode("Quantity: " + item.quantity),
+        document.createElement("br"),
+        document.createTextNode("ID: " + item.id)
+    );
+
+    content.append(name,details);
+    
+    const newItem = document.createElement('div');
+    newItem.className = "nItem";
+    newItem.append(img, content);
+
+    document.getElementById("items").append(newItem);
+}
+
+async function loadSave(){
+    const response = await fetch("Backend.php");
+    if (!response.ok){
+        throw new Error("Could not load saved items");
+    }    
+    const data = await response.json();
+    data.items.forEach(renderItem);
+}
+
+async function findToDelete(){
+    const idToFind = Number(document.getElementById("delID").value);
+
+    const response = await fetch("Backend.php",{
+        method: "DELETE",
+        headers: {"Content-Type": "application/json"},
+        body:JSON.stringify({id: idToFind})
+    });
+
+    const result = await response.json();
+
+    if(!response.ok){
+        alert(result.error);
+        return;
+    } 
+
+    alert("Item Deleted.");
+    location.reload();
+}
+
+let itemBeingEdited=null;
+
+async function findToEdit() {
+    const response = await fetch("Backend.php");
+    if (!response.ok){
+        throw new Error("Could not load saved items");
+    }    
+    const data = await response.json();
+
+    const idToFind = Number(document.getElementById("edID").value);
+
+    const foundItem = data.items.find(
+        item => Number(item.id) === idToFind
+    );
+
+    if(!foundItem){
+        alert("No item found with id: "+idToFind);
+        return;
+    }
+    alert("Successfully found the item!")
+    document.getElementById("Editing").close();
+    foundIDtoEdit(foundItem);
+}
+
+async function foundIDtoEdit(item) {
+    itemBeingEdited = item;
+    document.getElementById("EditorWindow").showModal();
+
+    document.getElementById("itemName").value = item.name;
+    document.getElementById("itemQuantity").value=item.quantity;
+    document.getElementById("itemID").value=item.id;
+    document.getElementById("itemPrice").value=item.price;
+}
+
+async function ConfirmEditing() {
+    if(!itemBeingEdited){
+        alert("Lost the found item!");
+        return;
+    }
+
+    const response = await fetch("Backend.php",{
+        method: "PATCH",
+        headers: {"Content-Type": "application/json"},
+        body:JSON.stringify({
+            originalId: Number(itemBeingEdited.id),
+            name: document.getElementById("itemName").value,
+            quantity: Number(document.getElementById("itemQuantity").value),
+            id: Number(document.getElementById("itemID").value),
+            price: Number(document.getElementById("itemPrice").value)
+        })
+    });
+
+    const result = await response.json();
+
+    if(!response.ok){
+        alert(result.error);
+        return;
+    }
+
+    alert("Changes to item ID: "+itemBeingEdited.id+" have been applied");
+    location.reload();
+}
+
+function openEdit(){
+    document.getElementById("Edit").showModal();
+}
+function edCancel(){
+    document.getElementById("Edit").close();
+}
+function edConfirm(){
+    document.getElementById("Edit").close();
+    document.getElementById("EEdit").showModal();
+}
+function edDelete(){
+    document.getElementById("EEdit").close();
+    document.getElementById("Delete").showModal();
+}
+function edEdit(){
+    document.getElementById("EEdit").close();
+    document.getElementById("Editing").showModal();
+}
+
+function CancelD(){
+    document.getElementById("Delete").close();
+}
+function CancelE(){
+    document.getElementById("Editing").close();
+}
+
+function CancelEditing(){
+    document.getElementById("EditorWindow").close();
+}
+
+function openSettings(){
+    document.getElementById("SettingsWindow").showModal();
+}
+
+function setClose(){
+    document.getElementById("SettingsWindow").close();
+}
+
+function opVer(){
+    document.getElementById("SettingsWindow").close();
+    document.getElementById("Verify").showModal();
+}
+
+function opChange(){
+    document.getElementById("SettingsWindow").close();
+    document.getElementById("changePw").showModal();
+}
+
+function cancelCpw(){
+    document.getElementById("changePw").close();
+}

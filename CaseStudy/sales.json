@@ -1,0 +1,94 @@
+{
+    "sales": [
+        {
+            "transactionDate": "2026-10-12",
+            "item": "Long Bond Paper",
+            "customer": "Renzo",
+            "service": "Print",
+            "transactionId": 11111,
+            "quantity": 4,
+            "income": 28
+        },
+        {
+            "transactionDate": "2026-10-11",
+            "item": "Vellum Paper",
+            "customer": "Batman",
+            "service": "Print",
+            "transactionId": 111112,
+            "quantity": 20,
+            "income": 550
+        },
+        {
+            "transactionDate": "2026-10-11",
+            "item": "Gloss Photo",
+            "customer": "Victor Magtanggol",
+            "service": "Digital Glass Printing",
+            "transactionId": 111115,
+            "quantity": 8,
+            "income": 986
+        },
+        {
+            "transactionDate": "2026-10-10",
+            "item": "Laminating Film",
+            "customer": "Jasmine Bartolome",
+            "service": "Laminate",
+            "transactionId": 111119,
+            "quantity": 57,
+            "income": 2430
+        },
+        {
+            "transactionDate": "2026-10-10",
+            "item": "Polyethylene Fabric",
+            "customer": "Chelsea",
+            "service": "Tarpaulin",
+            "transactionId": 111182,
+            "quantity": 4,
+            "income": 4480
+        },
+        {
+            "transactionDate": "2026-10-10",
+            "item": "Long Bond Paper",
+            "customer": "Tigreal",
+            "service": "Print",
+            "transactionId": 213245,
+            "quantity": 500,
+            "income": 2500
+        },
+        {
+            "transactionDate": "2026-10-09",
+            "item": "Folder",
+            "customer": "Rimuru",
+            "service": "Purchase Supply",
+            "transactionId": 231875,
+            "quantity": 30,
+            "income": 320
+        },
+        {
+            "transactionDate": "2026-10-08",
+            "item": "Specialty Paper",
+            "customer": "Ryan",
+            "service": "Print",
+            "transactionId": 123995,
+            "quantity": 12,
+            "income": 23
+        },
+        {
+            "transactionDate": "2026-10-08",
+            "item": "Long Bond Paper",
+            "customer": "Mordekaiser",
+            "service": "Print",
+            "transactionId": 120395,
+            "quantity": 4,
+            "income": 16
+        },
+        {
+            "transactionDate": "2026-10-07",
+            "item": "Bond Paper",
+            "customer": "Gagamboy",
+            "service": "Print",
+            "transactionId": 9283452,
+            "quantity": 9,
+            "income": 37
+        }
+    ]
+}

@@ -1,0 +1,528 @@
+@font-face{
+    font-family: "Clarity City";
+    src: url("Clarity_City/static/ClarityCity-Regular.ttf") format("truetype");
+    font-weight:normal;
+    font-style:normal;
+}
+h1{
+    font-family: "Clarity City", sans-serif;
+    text-align:center;
+    color: #4d0e2f;
+    font-size: 45px;
+}
+h2{
+    font-family: "Clarity City", sans-serif;
+    text-align:center;
+    color: #4d0e2f;
+    font-size: 30px;
+}
+
+nav ul{
+    display:flex;
+    align-items: center;
+    gap: 12px;
+    list-style: none;
+    width: 95%;
+    margin: 0 auto;
+    padding: 9px 10px;
+}
+nav li{
+    flex: 1;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: bold;
+    padding: 9px 10px;
+    border-radius: 6px;
+    border: 2px solid #4d0e2f;
+    background-color: #FFB1B1;
+    color: #4d0e2f;
+    cursor: pointer;
+}
+nav li:hover{
+    background-color: #4d0e2f;
+    color: #FFB1B1;
+}
+nav li a{
+    display: block;
+    margin: -9px -10px;
+    padding: 9px 10px;
+    color: inherit;
+    text-decoration: none;
+}
+
+hr{
+    border: 4px solid #FFB1B1;
+    margin: 20px 0;
+}
+
+dialog{
+    border-radius:10px;
+    border: 3px solid black;
+    position: fixed;
+    inset:0;
+    margin:auto;
+    width:fit-content;
+    height:fit-content;
+}
+dialog:modal{
+    background-color:#FFFAD3;
+}
+
+#Verify{
+    text-align:center;
+}
+#Verify::backdrop{
+    backdrop-filter: blur(4px);
+    background-color: rgba(0,0,0,0.4);
+}
+
+input[type="submit"]{
+    border-radius: 5px;
+    background-color: #FFCCB8;
+    border: 2px solid black;
+    padding: 5px;
+    font-family: "Clarity City", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+input[type="submit"]:hover{
+    background-color: #4d0e2f;
+    color: #FFB1B1;
+}
+
+button{
+    border-radius: 5px;
+    background-color: #FFB1B1;
+    border: 2px solid #4d0e2f;
+    padding: 5px;
+    font-family: "Clarity City", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #4d0e2f;
+    color: #FFB1B1
+}
+
+body{
+    font-family: "Clarity City", sans-serif;
+    background-color: #FFFAD3;
+}
+
+.inv{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.inv button{
+    position: absolute;
+    right: 0;
+}
+.inv button:hover{
+    background-color: #4d0e2f;
+    color: #FFB1B1;
+}
+#add{
+    cursor: pointer;
+}
+
+#popAdd::backdrop{
+    backdrop-filter: blur(4px);
+    background-color: rgba(0,0,0,0.4);
+}
+#popAddOpt{
+    display:flex;
+    justify-content: center;
+    gap: 65px;
+}
+#popAddOpt input{
+    width: 100px;
+    cursor: pointer;
+}
+#popAddOpt input:hover{
+    background-color: #4d0e2f;
+    color: #FFB1B1;
+}
+
+.items{
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.nItem{
+    border: 2px solid #4d0e2f;
+    border-radius: 10px;
+    overflow: hidden;
+
+    flex: 0 0 calc((100% - (4 * 15px))/5);
+
+    display:flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+.nItem img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.dtls{
+    font-family: "Clarity City", sans-serif;
+    font-weight: bold;
+}
+.info{
+    font-style: italic;
+}
+.nm{
+    font-family: "Clarity City", sans-serif;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0;
+}
+ @media (max-width: 1024px) {
+    .items {
+        grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .items {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*SUMMARY PART*/
+.MainBox{
+    display: grid;
+    grid-template-columns: 69.4% 29.4%;
+    gap:10px;
+}
+.ItemBox{
+    border: 2px solid #4d0e2f;
+    border-radius: 20px;
+    height:600px;
+    box-sizing: border-box;
+    min-height: 0;
+    background-color: #FFCCB8;
+    overflow: hidden;
+}
+
+.InfoBox{
+    border: 2px solid #4d0e2f;
+    border-radius: 20px;
+    height:600px;
+    grid-template-rows: repeat(4, minmax(0,1fr));
+    box-sizing: border-box;
+    gap: 10px;
+    padding: 10px;
+    display: grid;
+    background-color: #4d0e2f;
+}
+.InfoBox #IBProfit{
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: #FFCCB8;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 5px;
+}
+.InfoBox #IBIncome{
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: #fc9d9d;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 5px;
+}
+.InfoBox #IBExpense{
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: #FFCCB8;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 5px;
+}
+.InfoBox #IBNotif{
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: #fc9d9d;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 5px;
+}
+.IBContent{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+}
+.IBCLabels{
+    display:flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #FFB1B1;
+    color: #4d0e2f;
+    border-bottom: 2px solid #4d0e2f;
+    margin-right: 1.4%;
+    flex: 0 0 auto;
+}
+.IBCLabels li{
+    flex: 1;
+    padding: 12px 16px;
+    text-align: left;
+    border-right: 2px solid #4d0e2f;
+    font-weight: bold;
+}
+
+h3{
+    font-size: 40px;
+    text-align: center;
+    margin:0px;
+}
+h4{
+    font-size: 40px;
+    margin-top: 2%;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.EIRow{
+    margin-top: 0;
+    display:flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #FFB1B1;
+    color: #4d0e2f;
+}
+.EIRow li{
+    flex: 1;
+    padding: 12px 16px;
+    text-align: left;
+    border-right: 2px solid #4d0e2f;
+    font-weight: bold;
+}
+.EnteredItems{
+    flex:1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+/*EDIT PART*/
+#Edit{
+    text-align:center;
+    width: 300px;
+}
+#Edit::backdrop{
+    backdrop-filter: blur(4px);
+    background-color: rgba(0,0,0,0.4);
+}
+.edChoice{
+    display: flex;
+    gap:10px;
+    justify-content: center;
+    text-align: center;
+}
+.edChoice button{
+    width: 150px;
+}
+
+
+#EEdit{
+    text-align:center;
+}
+#EEdit::backdrop{
+    backdrop-filter: blur(4px);
+    background-color: rgba(0,0,0,0.4);
+}
+.EEditbut{
+    display: flex;
+    gap:60px;
+    text-align: center;
+    justify-content: center;
+}
+.EEditbut button{
+    width: 140px;;
+}
+
+#Delete::backdrop{
+    backdrop-filter: blur(4px);
+    background-color: rgba(0,0,0,0.4);
+}
+
+#Editing::backdrop{
+    backdrop-filter: blur(4px);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.DelSub{
+    justify-content: center;
+    display: flex;
+    gap: 50px;
+}
+.DelSub input[type="submit"]{
+    width:130px;
+    text-align: center;
+}
+
+#EditorWindow::backdrop{
+    backdrop-filter: blur(4px);
+    background-color: rgba(0,0,0,0.4)
+}
+
+#EditOptions{
+    justify-content: center;
+    display: flex;
+    gap: 35px;
+}
+#EditOptions button{
+    width:130px;
+}
+#EditorWindow h5{
+    font-size: 30px;
+    text-align: center;
+    margin:0px;
+    font-family: "Clarity City", sans-serif;
+}
+
+.salesHeader{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position:relative;
+}
+.salesHeader .sHeaderButton{
+    display: flex;
+    gap: 30px;
+    position: absolute;
+    right: 10px;
+    margin-bottom: 0;
+}
+.salesHeader .sHeaderButton button{
+    width: 100px;
+}
+
+#Record h5{
+    font-size: 30px;
+    text-align: center;
+    margin:0px;
+    font-family: "Clarity City", sans-serif;
+}
+#Record .recButtons{
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    display: flex;
+}
+
+#Record::backdrop{
+    backdrop-filter: blur(4px);
+    background-color: rgba(0,0,0,0.4);
+}
+#Record .recButtons button{
+    width: 120px;
+}
+
+#Modify h5{
+    font-size: 30px;
+    text-align: center;
+    margin:0px;
+    font-family: "Clarity City", sans-serif;
+}
+#Modify .modButtons{
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    display: flex;
+}
+#Modify::backdrop{
+    backdrop-filter: blur(4px);
+    background-color: rgba(0,0,0,0.4);
+}
+#Modify .modButtons button{
+    width: 150px;
+}
+
+.modifyWindow::backdrop{
+    backdrop-filter: blur(4px);
+    background-color: rgba(0,0,0,0.4);
+}
+.modifyWindow h5{
+    font-size: 30px;
+    text-align: center;
+    margin:0px;
+    font-family: "Clarity City", sans-serif;
+}
+.modifyWindow .modButtons{
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    display: flex;
+}
+.modifyWindow .modButtons button{
+    width: 115px;
+}
+
+#SettingsWindow::backdrop{
+    backdrop-filter: blur(4px);
+    background-color: rgba(0,0,0,0.4)
+}
+
+#SettingsWindow h5{
+    font-size: 30px;
+    text-align: center;
+    margin:0px;
+    font-family: "Clarity City", sans-serif;
+}
+
+.row{
+    display: grid;
+    grid-template-columns: 150px auto;
+    align-items: center;
+}
+
+#SettingsWindow button{
+    width:75px;
+}
+
+#closeBut{
+    display: flex;
+    justify-content: center;
+}
+
+#closeBut button{
+    width: 100px;
+}
+
+#changePw h5{
+    font-size: 30px;
+    text-align: center;
+    margin:0px;
+    font-family: "Clarity City", sans-serif;
+}
+#changePw::backdrop{
+    backdrop-filter: blur(4px);
+    background-color: rgba(0,0,0,0.4);
+}
+.pwrow{
+    display: grid;
+    grid-template-columns: 190px auto;
+    align-items: center;
+}
+#cpwBut{
+    display: flex;
+    justify-content: center;
+    gap:25px;
+}
+#cpwBut button{
+    width: 145px;
+}
+.warning{
+    text-align: center;
+}

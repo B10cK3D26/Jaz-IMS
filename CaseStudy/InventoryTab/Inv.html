@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPS Inventory</title>
+    <link rel="stylesheet" href="../MainDsgn.css">
+    <script src="inv.js" defer></script>
+    <script src="../verif.js" defer></script>
+</head>
+<body>
+    <h1>Jaz Printing Services Inventory</h1>
+    <hr>
+        <nav>
+        <ul>
+            <li><a href="../SalesTab/sales.html">Sales</a></li>
+            <li><a href="../Main.html">Inventory</a></li>
+            <li>Summary</li>
+            <li onclick="openEdit()">Edit</li>
+            <li onclick="openSettings()">Settings</li>
+        </ul>
+    </nav>
+    <hr>
+    <h2>SUMMARY</h2>
+    <div class="MainBox">
+        <div class="ItemBox">
+            <div class="IBContent">
+                <ul class="IBCLabels">
+                    <li>Date</li>
+                    <li>Item Name</li>
+                    <li>Category</li>
+                    <li>ID</li>
+                    <li>Quantity</li>
+                    <li>Status</li>
+                    <li>Total Price</li>
+                </ul>
+                <div class="EnteredItems">
+                </div>
+            </div>
+        </div>
+        <div class="InfoBox">
+            <div id="IBProfit">
+                <h3>PROFIT</h3>
+            </div>
+            <div id="IBIncome">
+                <h3>INCOME</h3>
+            </div>
+            <div id="IBExpense">
+                <h3>EXPENSE</h3>
+            </div>
+            <div id="IBNotif">
+                <h3>WARNING</h3>
+            </div>
+            
+        </div>
+    </div>
+    <dialog id="Edit" popover="manual">
+        <p><b>What do you wanna do?</b></p>
+        <div class="edChoice">
+            <button id="edCancel" onclick="edCancel()">Cancel</button>
+            <button id="edConfirm" onclick="edConfirm()">Edit/Delete</button>
+        </div>
+    </dialog>
+    <dialog id="EEdit" popover="manual">
+        <p><b>Do you want to edit or delete an existing item?</p></b>
+        <div class="EEditbut">
+            <button id="edDel" onclick="edDelete()">Delete</button>
+            <button id="edEdit" onclick="edEdit()">Edit</button>
+        </div>
+    </dialog>
+    <dialog id="Delete" popover="manual">
+        <p><b>Please Enter the ID number of the item you want to delete</b></p>
+        <p>ID of the Item: <input type="number" id="delID" placeholder="Enter ID"></p>
+        <div class="DelSub">
+            <input type="submit" value="Cancel" onclick="CancelD()">
+            <input type="submit" value="Enter" onclick="findToDelete()">
+        </div>
+    </dialog>
+    <dialog id="Editing" popover="manual">
+        <p><b>Please Enter the ID number of the item you want to edit</b></p>
+        <p>ID of the Item: <input type="number" id="edID" placeholder="Enter ID"></p>
+        <div class="DelSub">
+            <input type="submit" value="Cancel" onclick="CancelE()">
+            <input type="submit" value="Enter" onclick="findToEdit()">
+        </div>
+    </dialog>
+    <dialog class="EditorWindow" id="EditorWindow" popover="manual">
+        <h5><b>Rewrite the Stored Data</b></h5>
+        <div>
+            <p>Item Name: <input type="text" id="itemName"></p>
+            <p>Item Quantity: <input type="number" id="itemQuantity"></p>
+            <p>Item ID: <input type="number" id="itemID"></p>
+            <p>Item Purchase Price: <input type="number" id="itemPrice"></p>
+            <div id="EditOptions">
+                <button id="EdOpCancel" onclick="CancelEditing()">Cancel</button>
+                <button id="EdOpConfirm" onclick="ConfirmEditing()">Confirm</button>
+            </div>
+        </div>
+        
+    </dialog>
+
+    <!-------------------------------SETTINGS--------------------------------->
+    <dialog class="SettingsWindow" id="SettingsWindow">
+        <h5><b>Settings</b></h5>
+        <div>
+            <p class="row">Lock Inventory: <button id="lockInv" onclick="opVer()">Lock</button></p>
+            <p class="row">Change Password: <button id="lockInv" onclick="opChange()">Change</button></p>
+            <div id="closeBut">
+                <button id="close" onclick="setClose()">Close</button>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="Verify" popover="manual">
+        <p><b>Please verify that you are an admin</b></p>
+        <p>Password: <input type="password" id="vpass" placeholder="Enter Password"></p>
+        <p id="warn"></p>
+        <input type="submit" id="vsub" value="Submit" onclick="verWindow()">
+    </dialog>
+
+    <dialog id="changePw" popover="manual">
+        <h5>Change Password</h5>
+        <div>
+            <p class="pwrow">Enter old password: <input type="text" id="opw" placeholder="Old Password"></input></p>
+            <p class="pwrow">Enter new password: <input type="text" id="npw" placeholder="New Password"></input></p>
+            <p class="pwrow">Confirm new password: <input type="text" id="cnpw" placeholder="Confirm" ></input></p>
+            <p class="warning" id="warn1"></p>
+            <div id="cpwBut">
+                <button onclick="cancelCpw()">Cancel</button>
+                <button onclick="changePw()">Change Password</button>
+            </div>
+        </div>
+    </dialog>
+
+</body>
+
+
+
+</html>

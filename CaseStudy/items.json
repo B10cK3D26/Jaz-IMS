@@ -1,0 +1,76 @@
+{
+    "items": [
+        {
+            "name": "Long Bond Paper",
+            "quantity": 40,
+            "id": 12,
+            "date": "10/11/2026",
+            "time": "10:49:59 AM",
+            "price": 200
+        },
+        {
+            "name": "A4 Bond paper",
+            "quantity": 90,
+            "id": 13,
+            "date": "10/11/2026",
+            "time": "10:50:47 AM",
+            "price": 350
+        },
+        {
+            "name": "Vellum Paper",
+            "quantity": 76,
+            "id": 16,
+            "date": "10/11/2026",
+            "time": "10:52:23 AM",
+            "price": 575
+        },
+        {
+            "name": "Laminating Film",
+            "quantity": 32,
+            "id": 17,
+            "date": "10/11/2026",
+            "time": "10:52:53 AM",
+            "price": 120
+        },
+        {
+            "name": "Folder",
+            "quantity": 84,
+            "id": 31,
+            "date": "10/11/2026",
+            "time": "10:53:19 AM",
+            "price": 215
+        },
+        {
+            "name": "Sticker Paper",
+            "quantity": 28,
+            "id": 19,
+            "date": "10/11/2026",
+            "time": "10:53:49 AM",
+            "price": 260
+        },
+        {
+            "name": "Specialty Paper",
+            "quantity": 45,
+            "id": 20,
+            "date": "10/11/2026",
+            "time": "10:54:15 AM",
+            "price": 321
+        },
+        {
+            "name": "Sublimation Paper",
+            "quantity": 34,
+            "id": 22,
+            "date": "10/11/2026",
+            "time": "11:44:38 AM",
+            "price": 109
+        },
+        {
+            "name": "Viny Sticker",
+            "quantity": 95,
+            "id": 23,
+            "date": "10/11/2026",
+            "time": "11:45:27 AM",
+            "price": 410
+        }
+    ]
+}
